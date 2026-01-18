@@ -181,6 +181,151 @@ nav a:hover::after {
   animation: float 3s ease-in-out infinite;
 }
 
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.contact-modal.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.contact-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 25, 0.65);
+  backdrop-filter: blur(14px);
+}
+
+.contact-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 420px;
+  max-width: 90%;
+  background: rgba(20, 20, 30, 0.9);
+  border-radius: 22px;
+  padding: 36px;
+  text-align: center;
+  box-shadow: 0 0 45px rgba(0,0,0,0.7);
+  opacity: 0;
+  transition: 0.35s ease;
+}
+
+.contact-modal.active .contact-box {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.contact-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.contact-close:hover {
+  color: #fff;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 28px;
+  filter: invert(1);
+  opacity: 0.9;
+}
+
+.contact-icons a {
+  width: 60px;
+  height: 60px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.contact-icons img {
+  width: 30px;
+  height: 30px;
+}
+
+.contact-icons a:hover {
+  transform: translateY(-6px) scale(1.1);
+}
+
+/* MODAL BASE */
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.35s ease;
+}
+
+.contact-modal.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* BACKDROP */
+.contact-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 25, 0.55);
+  backdrop-filter: blur(0px);
+  transition: background-color 0.4s ease;
+
+}
+
+/* MODAL BOX */
+.contact-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  max-width: 90%;
+  padding: 36px;
+  background: rgba(20, 20, 30, 0.92);
+  border-radius: 22px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+
+  opacity: 0;
+  transform: translate(-50%, -46%) scale(0.96);
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ACTIVE STATE */
+.contact-modal.active .contact-backdrop {
+  background-color: rgba(10, 15, 25, 0.65);
+  backdrop-filter: blur(14px);
+}
+
+.contact-modal.active .contact-box {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
 /* SECTION */
 section {
   padding: 100px 10%;
