@@ -2,6 +2,32 @@ const header = document.getElementById('header');
 const bars = document.querySelectorAll('.bar div');
 const btnAbout = document.getElementById('btnAbout');
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btnContact = document.getElementById("btnContact");
+  const contactModal = document.getElementById("contactModal");
+  const closeContact = document.querySelector(".contact-close");
+  const contactBackdrop = document.querySelector(".contact-backdrop");
+
+  if (!btnContact) {
+    console.error("btnContact GA KETEMU");
+    return;
+  }
+
+  btnContact.addEventListener("click", () => {
+    contactModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+
+  const closeModal = () => {
+    contactModal.classList.remove("active");
+    document.body.style.overflow = "";
+  };
+
+  closeContact.addEventListener("click", closeModal);
+  contactBackdrop.addEventListener("click", closeModal);
+});
+
 // Navbar scroll effect + skill animation
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 50);
@@ -27,9 +53,6 @@ window.addEventListener("scroll", () => {
   const maxScroll = document.body.scrollHeight - window.innerHeight;
   const progress = scrollY / maxScroll;
 
-  // Background naik pelan (parallax)
-  video.style.transform = `translateY(${scrollY * 0.15}px)`;
-
   // Biru makin terang
   overlay.style.opacity = 0.2 + progress * 0.5;
 
@@ -39,4 +62,5 @@ window.addEventListener("scroll", () => {
     saturate(${0.8 + progress * 0.4})
   `;
 });
+
 
