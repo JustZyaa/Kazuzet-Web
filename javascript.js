@@ -62,5 +62,3 @@ window.addEventListener("scroll", () => {
     saturate(${0.8 + progress * 0.4})
   `;
 });
-
-
